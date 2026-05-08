@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Gestionar Usuarios</title>
+</head>
+<body>
+    <h1>Lista de Usuarios Registrados</h1>
+    
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.id }}</td>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.apellidos }}</td>
+                    <td>
+                        <!-- Botón Editar (Lleva a la página de edición) -->
+                        <a href="/edit/{{ usuario.id }}">
+                            <button>✏️ Editar</button>
+                        </a>
+                        
+                        <!-- Botón Borrar (Envía una petición POST al servidor) -->
+                        <form action="/delete/{{ usuario.id }}" method="POST" style="display:inline;">
+                            <button type="submit" onclick="return confirm('¿Seguro que quieres borrar a {{ usuario.nombre }}?');">
+                                🗑️ Borrar
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No hay usuarios en la base de datos.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="/">⬅️ Volver al Inicio</a>
+</body>
+</html>
