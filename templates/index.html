@@ -2,27 +2,20 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>Hola Render Alex</title>
+    <title>Panel de Control - Alex</title>
 </head>
 <body>
-    <h1>Hola mundo desde Render Soy Alex</h1>
-
-    <h2>Añadir Usuario</h2>
-    <!-- Este formulario envía los datos al servidor por el método POST -->
-    <form action="/" method="POST">
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="text" name="apellidos" placeholder="Apellidos" required>
-        <button type="submit">Guardar</button>
-    </form>
-
-    <h2>Lista de Usuarios</h2>
-    <ul>
-        <!-- Esto es Jinja2, permite a Python inyectar código en el HTML -->
-        {% for usuario in usuarios %}
-            <li>{{ usuario.nombre }} {{ usuario.apellidos }}</li>
-        {% else %}
-            <li>No hay usuarios todavía.</li>
-        {% endfor %}
-    </ul>
+    <h1>Bienvenido al Panel de Gestión</h1>
+    <p>¿Qué deseas hacer?</p>
+    
+    <div style="margin-top: 20px;">
+        <a href="/add">
+            <button style="padding: 10px; font-size: 16px;">➕ Añadir Nuevo Usuario</button>
+        </a>
+        <br><br>
+        <a href="/manage">
+            <button style="padding: 10px; font-size: 16px;">⚙️ Gestionar Usuarios</button>
+        </a>
+    </div>
 </body>
 </html>
